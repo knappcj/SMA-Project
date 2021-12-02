@@ -23,4 +23,4 @@ def findMax(results_dict):
         if sum > high_sum:
             high_sum = sum
             high_day = i
-    return max_tickers[high_day], high_day
+    return max_tickers[high_day], high_day+1

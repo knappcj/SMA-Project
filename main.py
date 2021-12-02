@@ -48,7 +48,7 @@ def findBest(industry, begin_day, end_day):
     buySell2, return2 = buySell(ticker2, begin_day, end_day, best_day)
     instruct1 = buySellDates(buySell1,ticker1)
     instruct2 = buySellDates(buySell2, ticker2)
-    return ticker1, ticker2, instruct1, instruct2, return1, return2
+    return ticker1, ticker2, instruct1, instruct2, return1, return2, best_day
 
 
 def buySellDates(data, ticker):
@@ -80,13 +80,19 @@ def runFunc():
     start = begindate.get()
     end = enddate.get()
     print(selectedid)
-    tick1, tick2, ans1, ans2, r1, r2 = findBest(str(selectedid), str(start), str(end))
+    tick1, tick2, ans1, ans2, r1, r2,bestDay = findBest(str(selectedid), str(start), str(end))
     format1 = "${:,.2f}".format(r1)
     format2 = "${:,.2f}".format(r2)
-    myanswer1.insert(tk.END, 'TICKER:', tick1)
-    myanswer1.insert(tk.END, 'Return:', format1)
-    myanswer2.insert(tk.END, 'TICKER:', tick2)
-    myanswer2.insert(tk.END, 'Return:', format2)
+    formatp1 ="{:.2%}".format(r1/50000)
+    formatp2 ="{:.2%}".format(r2/50000)
+    myanswer1.insert(tk.END, 'SMA Days: '+ str(bestDay))
+    myanswer2.insert(tk.END, 'SMA Days: '+ str(bestDay))
+    myanswer1.insert(tk.END, 'TICKER: ' + tick1)
+    myanswer1.insert(tk.END, 'Return: ' + format1)
+    myanswer2.insert(tk.END, 'TICKER: ' + tick2)
+    myanswer2.insert(tk.END, 'Return:' + format2)
+    myanswer1.insert(tk.END, 'Percent Return: ' + formatp1)
+    myanswer2.insert(tk.END, 'Percent Return: ' + formatp2)
     for i in ans1:
         myanswer1.insert(tk.END, i)
     for i in ans2:
