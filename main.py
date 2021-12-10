@@ -132,11 +132,10 @@ tk.Label(mywindow, text = 'End Date').place(x=300, y=50)
 enddate = tk.StringVar()
 tk.Entry(mywindow, textvariable = enddate).place(x=370, y=50)
 
-tk.Button(mywindow,text="Find Best Two", command = runFunc).place(x= 50, y=110)
+tk.Button(mywindow,text="Find Best Two", command = runFunc).place(x= 250, y=300)
 
-resultLabel1 = tk.Label(mywindow, text = '').place(x=30, y=150)
-
-resultLabel2 = tk.Label(mywindow, text = '').place(x=30, y=200)
+intructLabel = tk.Label(mywindow, text = 'Select Industry Here ->').place(x=80, y=200)
+dateLabel = tk.Label(mywindow, text = 'Input date as YYYY-MM-DD').place(x=30, y=10)
 
 mywindow.mainloop()
 

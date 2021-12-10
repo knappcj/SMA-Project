@@ -31,7 +31,7 @@ def TradingStrategy(data):
             prior_volume = prices_volumes.loc[t, 'Prior Volume']
 
             # BUY is -1 due to cash outflow and SELL is +1 due to cash inflow
-            # +++ Your Code Below +++
+
             if today_price > prior_price and today_volume < prior_volume and buy_count==sell_count:
                 buy_or_sell = -1
                 buy_count += 1
@@ -41,22 +41,19 @@ def TradingStrategy(data):
             else:
                 buy_or_sell = 0
 
-            # +++ Your Code Above +++
 
             # When it is the final day in the entire sample period
             if t == prices_volumes.index[-1]:
                 # We need to add trades to have equal numbers of buy and sell
-                # +++ Your Code Below +++
+
                 additional_trade = buy_count - sell_count
                 buy_or_sell += additional_trade
 
-            # +++ Your Code Above +++
-
             prices_volumes.loc[t, 'Buy or Sell'] = buy_or_sell
             # Calcualte the cash flow for each trade
-            # +++ Your Code Below +++
+
             cash_flow = today_price * buy_or_sell
-            # +++ Your Code Above +++
+
             prices_volumes.loc[t, 'Cash Flow'] = cash_flow
 
         # Calculate total P&Ls
@@ -66,8 +63,4 @@ def TradingStrategy(data):
 
     return result_array
 
-#For a given ticker and date range, loop thru different SMA days to find out the best N-day SMA
-
-
-# Use a for-loop to find the highest profits and its associated prior N-day
 
